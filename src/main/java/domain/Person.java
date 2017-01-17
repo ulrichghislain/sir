@@ -27,16 +27,15 @@ public class Person {
     @Transient
     Collection <ElectronicDevices> electro ;
     @Transient
-    private List<Person> friends;
+    Collection<Person> friends;
     
 public Person() {
 	
 }
 
 
-public Person(int id, String nom, String prenom, String email,Collection<domain.residence> residence,Collection<ElectronicDevices> ElectronicDevices, List<Person> friends ) {
-	//Collection<domain.residence> residence,
-	//Collection<ElectronicDevices> ElectronicDevices, List<Person> friends
+public Person(int id, String nom, String prenom, String email,Collection<domain.residence> residence,Collection<ElectronicDevices> ElectronicDevices, Collection<Person> friends ) {
+	
 	this.id = id;
 	this.nom = nom;
 	this.prenom = prenom;
@@ -69,18 +68,22 @@ public Collection<ElectronicDevices> getElectro() {
 public void setElectro(Collection<ElectronicDevices> electro) {
 	this.electro = electro;
 }
-@ManyToMany
-public List<Person> getFriends() {
-	return friends;
-}
 
-public void setFriends(List<Person> friends) {
-	this.friends = friends;
-}
+
 
 public void setNom(String nom) {
 	this.nom = nom;
 }
+@ManyToMany
+public Collection<Person> getFriends() {
+	return friends;
+}
+
+
+public void setFriends(Collection<Person> friends) {
+	this.friends = friends;
+}
+
 
 public String getPrenom() {
 	return prenom;

@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -7,19 +9,19 @@ import javax.persistence.Transient;
 
 public class ElectronicDevices {
 	private int id;
-	private float consommation;
+	private double consommation;
 	@Transient
-	residence R;
+    Collection <residence> residence;
 
 	public ElectronicDevices() {
 	
 	}
 
-	public ElectronicDevices(int id, float consommation, residence r) {
-		super();
+	public ElectronicDevices(int id, double consommation, Collection<residence> r) {
+		
 		this.id = id;
 		this.consommation = consommation;
-		R = r;
+		this.residence=r ;
 	}
 	@Id
 	@GeneratedValue
@@ -31,21 +33,22 @@ public class ElectronicDevices {
 		this.id = id;
 	}
 
-	public float getConsommation() {
+	public double getConsommation() {
 		return consommation;
 	}
 
 	public void setConsommation(float consommation) {
 		this.consommation = consommation;
 	}
-    @ManyToOne
-	public residence getR() {
-		return R;
+	 @ManyToOne
+	public Collection<residence> getResidence() {
+		return residence;
 	}
 
-	public void setR(residence r) {
-		R = r;
+	public void setResidence(Collection<residence> residence) {
+		this.residence = residence;
 	}
-
+   
+	
 	
 }

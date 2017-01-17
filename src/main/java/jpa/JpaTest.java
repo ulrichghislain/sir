@@ -52,26 +52,26 @@ public class JpaTest {
         int idOfPerson = manager.createQuery("Select a From Person a", Person.class).getResultList().size();
         
         
-        Collection<residence> residence ;
-         residence = new ArrayList <residence>();
-         
+        Collection<residence> residence  = new ArrayList <residence>();
+        Collection<Person> friends  = new ArrayList <Person>();
          Collection<ElectronicDevices> ElectronicDevices ;
          ElectronicDevices = new ArrayList <ElectronicDevices>();
          
          ElectronicDevices electronicDevices1;
          ElectronicDevices electronicDevices2;
-         
-         electronicDevices1 = new ElectronicDevices (215, 15.5, Residence);
+         friends  = new ArrayList <Person>();
+         //Person corine;
+         //Person aly;
+         electronicDevices1 = new ElectronicDevices (215, 15.5,residence);
          
         if (idOfPerson == 0) {
           
-            manager.persist(residence);
-            
+            //manager.persist(residence); 
             
             manager.persist(ElectronicDevices);
 
-            manager.persist(new Person(1, "g", "f", "fhhj","ded","efe"));
-            manager.persist(new Person("Captain Nemo", C));
+            manager.persist(new Person(1, "ghislain", "ulrich", "ulrich@yahoo.fr",residence,ElectronicDevices,friends));
+           manager.persist(new Person(2, "kady", "ordiams", "ordiams@yahoo.fr",residence,ElectronicDevices,friends));
 
         }
     }
