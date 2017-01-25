@@ -25,7 +25,7 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
-@ManyToOne
+// @ManyToOne
 public residence getResid() {
 	return resid;
 }

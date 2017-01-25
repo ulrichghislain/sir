@@ -65,7 +65,7 @@ private Long id;
 	public void setNbreDePieces(int nbreDePieces) {
 		this.nbreDePieces = nbreDePieces;
 	}
-    @ManyToOne
+	// @ManyToOne
 	public Person getPerson() {
 		return person;
 	}
@@ -73,7 +73,7 @@ private Long id;
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-    @OneToMany(mappedBy = "resid", cascade = CascadeType.PERSIST)
+	// @OneToMany(mappedBy = "resid", cascade = CascadeType.PERSIST)
 
 	public Collection<Heater> getHeater() {
 		return Heater;
@@ -82,7 +82,7 @@ private Long id;
 	public void setHeater(Collection<Heater> heater) {
 		Heater = heater;
 	}
-	  @OneToMany(mappedBy = "R", cascade = CascadeType.PERSIST)
+	//  @OneToMany(mappedBy = "R", cascade = CascadeType.PERSIST)
 
 	public Collection<ElectronicDevices> getElectronicDevices() {
 		return ElectronicDevices;

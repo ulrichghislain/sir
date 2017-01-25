@@ -40,7 +40,7 @@ public class ElectronicDevices {
 	public void setConsommation(float consommation) {
 		this.consommation = consommation;
 	}
-	 @ManyToOne
+	// @ManyToOne
 	public Collection<residence> getResidence() {
 		return residence;
 	}

@@ -1,4 +1,5 @@
 package domain;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,30 +23,36 @@ public class Person {
     private String prenom;
     
     private String email;
-    @Transient
-    Collection <residence> residence;
-    @Transient
-    Collection <ElectronicDevices> electro ;
-    @Transient
-    Collection<Person> friends;
+  //  @Transient
+  //  Collection <residence> residence;
+  //  @Transient
+   // Collection <ElectronicDevices> electro ;
+ //   @Transient
+  //  Collection<Person> friends;
     
 public Person() {
 	
 }
 
-
+/*
 public Person(int id, String nom, String prenom, String email,Collection<domain.residence> residence,Collection<ElectronicDevices> ElectronicDevices, Collection<Person> friends ) {
 	
 	this.id = id;
 	this.nom = nom;
 	this.prenom = prenom;
 	this.email = email;
-	this.residence = residence;
-	this.electro = electro;
-	this.friends = friends;
+	// 	this.residence = residence;
+	// 	this.electro = electro;
+	// 	this.friends = friends;
 }
 
+public Person(int id, String nom, String prenom ) {
+	
+	this.id = id;
+	this.nom = nom;
+	this.prenom = prenom;
 
+}*/
 @Id
 @GeneratedValue
 public int getId() {
@@ -59,30 +66,30 @@ public void setId(int id) {
 public String getNom() {
 	return nom;
 }
-@OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
+// @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
 
-public Collection<ElectronicDevices> getElectro() {
-	return electro;
-}
+//public Collection<ElectronicDevices> getElectro() {
+//	return electro;
+//}
 
-public void setElectro(Collection<ElectronicDevices> electro) {
-	this.electro = electro;
-}
+//public void setElectro(Collection<ElectronicDevices> electro) {
+//	this.electro = electro;
+//}
 
 
 
 public void setNom(String nom) {
 	this.nom = nom;
 }
-@ManyToMany
-public Collection<Person> getFriends() {
-	return friends;
-}
+// @ManyToMany
+//public Collection<Person> getFriends() {
+//	return friends;
+//}
 
 
-public void setFriends(Collection<Person> friends) {
-	this.friends = friends;
-}
+//public void setFriends(Collection<Person> friends) {
+//	this.friends = friends;
+//}
 
 
 public String getPrenom() {
@@ -101,15 +108,29 @@ public void setEmail(String email) {
 	this.email = email;
 }
 
-@OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
+// @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
 
-public Collection<residence> getResidence() {
-	return residence;
-}
+//public Collection<residence> getResidence() {
+//	return residence;
+//}
 
-public void setResidence(Collection<residence> residence) {
-	this.residence = residence;
-}
+//public void setResidence(Collection<residence> residence) {
+//	this.residence = residence;
+//}
+
+/*public List <Person>getList(){
+
+Collection<Person> listpers = new ArrayList<Person>();
+
+Person per = new Person();
+	
+	for(Person per : listpers){
+		
+		System.out.println("nom"+ per.getNom() + "prenom " + per.getPrenom());
+		
+	}
+}*/
+
 }
     
  
