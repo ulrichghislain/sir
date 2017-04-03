@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 import domain.ElectronicDevices;
 import domain.Person;
-import domain.residence;
+import domain.Home;
 
 
 public class JpaTest {
@@ -52,7 +52,7 @@ public class JpaTest {
         int idOfPerson = manager.createQuery("Select a From Person a", Person.class).getResultList().size();
         
         
-        Collection<residence> residence  = new ArrayList <residence>();
+        Collection<Home> residence  = new ArrayList <Home>();
         Collection<Person> friends  = new ArrayList <Person>();
          Collection<ElectronicDevices> ElectronicDevices ;
          ElectronicDevices = new ArrayList <ElectronicDevices>();

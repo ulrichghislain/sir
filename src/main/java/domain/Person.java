@@ -2,135 +2,92 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import java.util.*;
+import javax.xml.bind.annotation.XmlRootElement;
 @Entity
+
+@NamedQueries
+({
+  @NamedQuery(name="person.find.by.id", query="SELECT p FROM Person p WHERE p.id = :person_id"),
+  @NamedQuery(name="person.find.friens.all", query="SELECT p FROM Person p join p.friends WHERE p.id = :person_id"),
+  @NamedQuery(name="person.find.home.all", query="SELECT p FROM Person p join p.homes WHERE p.id = :person_id")
+})
+@XmlRootElement(name="persons")
 public class Person {
-	
-	
-	private int id;
-
-    
-	private String nom;
-
-    private String prenom;
-    
-    private String email;
-  //  @Transient
-  //  Collection <residence> residence;
-  //  @Transient
-   // Collection <ElectronicDevices> electro ;
- //   @Transient
-  //  Collection<Person> friends;
-    
-public Person() {
-	
-}
-
-/*
-public Person(int id, String nom, String prenom, String email,Collection<domain.residence> residence,Collection<ElectronicDevices> ElectronicDevices, Collection<Person> friends ) {
-	
-	this.id = id;
-	this.nom = nom;
-	this.prenom = prenom;
-	this.email = email;
-	// 	this.residence = residence;
-	// 	this.electro = electro;
-	// 	this.friends = friends;
-}
-
-public Person(int id, String nom, String prenom ) {
-	
-	this.id = id;
-	this.nom = nom;
-	this.prenom = prenom;
-
-}*/
-@Id
-@GeneratedValue
-public int getId() {
-	return id;
-}
-
-public void setId(int id) {
-	this.id = id;
-}
-
-public String getNom() {
-	return nom;
-}
-// @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
-
-//public Collection<ElectronicDevices> getElectro() {
-//	return electro;
-//}
-
-//public void setElectro(Collection<ElectronicDevices> electro) {
-//	this.electro = electro;
-//}
-
-
-
-public void setNom(String nom) {
-	this.nom = nom;
-}
-// @ManyToMany
-//public Collection<Person> getFriends() {
-//	return friends;
-//}
-
-
-//public void setFriends(Collection<Person> friends) {
-//	this.friends = friends;
-//}
-
-
-public String getPrenom() {
-	return prenom;
-}
-
-public void setPrenom(String prenom) {
-	this.prenom = prenom;
-}
-
-public String getEmail() {
-	return email;
-}
-
-public void setEmail(String email) {
-	this.email = email;
-}
-
-// @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
-
-//public Collection<residence> getResidence() {
-//	return residence;
-//}
-
-//public void setResidence(Collection<residence> residence) {
-//	this.residence = residence;
-//}
-
-/*public List <Person>getList(){
-
-Collection<Person> listpers = new ArrayList<Person>();
-
-Person per = new Person();
-	
-	for(Person per : listpers){
+		private Long id;
+	    private String surname;
+	    private String firstname;
+	    private String mail;
+	    
+	    private List<Person> friends = new ArrayList<Person>();
+	    private List<Home> homes = new ArrayList<Home>();
+	    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	    @JoinColumn(name="FK_PERSON_ID", referencedColumnName = "PERSON_ID")
+	    
+	    
+	    @Id
+	    @Column(name="PERSON_ID")
+	    @GeneratedValue
+	    public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
+		}
+		public String getSurname() {
+			return surname;
+		}
+		public void setSurname(String surname) {
+			this.surname = surname;
+		}
+		public String getFirstname() {
+			return firstname;
+		}
+		public void setFisrname(String fisrname) {
+			this.firstname = fisrname;
+		}
+		public String getMail() {
+			return mail;
+		}
+		public void setMail(String mail) {
+			this.mail = mail;
+		}
 		
-		System.out.println("nom"+ per.getNom() + "prenom " + per.getPrenom());
+		  @ManyToMany(cascade = {CascadeType.PERSIST})
+		    @JoinTable
+		            (
+		            name="FRIENDS",
+		            joinColumns = {@JoinColumn(name="PERSON_SOURCE", referencedColumnName = "PERSON_ID")},
+		            inverseJoinColumns = {@JoinColumn(name="PERSON_TARGET", referencedColumnName="PERSON_ID")}
+		            )
+		public List<Person> getFriends() {
+			return friends;
+		}
+		public void setFriends(List<Person> friends) {
+			this.friends = friends;
+		}
+		public List<Home> getHomes() {
+			return homes;
+		}
+		public void setHomes(List<Home> homes) {
+			this.homes = homes;
+		}
+	    public Person(){ 
+	    }
+		public Person(String surname, String fisrname, String mail) {
+			
+			this.surname = surname;
+			this.firstname = fisrname;
+			this.mail = mail;
+		}
+	    public String toString(){
+	        return (this.getSurname()+" "+this.getFirstname()+" "+this.getMail());  
+	    }
 		
-	}
-}*/
-
+		
 }
     
  
