@@ -2,8 +2,8 @@ package domain;
 
 import javax.persistence.*;
 
-@Entity
-@DiscriminatorValue("electronicDevice")
+/*@Entity
+@DiscriminatorValue("electronicDevice")*/
 public class ElectronicDevices extends Machine {
     
     public ElectronicDevices(){

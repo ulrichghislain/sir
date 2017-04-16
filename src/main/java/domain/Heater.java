@@ -2,8 +2,8 @@ package domain;
 
 import javax.persistence.*;
 
-@Entity
-@DiscriminatorValue("heater")
+/*@Entity
+@DiscriminatorValue("heater")*/
 public class Heater extends Machine{
     
     public Heater(){

@@ -39,7 +39,7 @@ public class JpaTest {
             Home home = new Home("12m²", 4, "villa koudou");
             homes.add(home);
             
-            pers.setHomes(homes);
+            //pers.setHomes(homes);
             Machine sd = new Heater("1600w");
             Machine ed = new ElectronicDevices("350w");
             home.getMachines().add(sd);

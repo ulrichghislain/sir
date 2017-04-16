@@ -1,14 +1,14 @@
 package domain;
 import javax.persistence.*;
 
-@Entity
+/*@Entity
 @NamedQueries(
 @NamedQuery(name="device.find.all", query="select m from Machine m")
 )
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_DEVICE")
 @DiscriminatorValue("Machine")
-
+*/
 
 
 public abstract class Machine {

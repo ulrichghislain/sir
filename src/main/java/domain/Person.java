@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 ({
   @NamedQuery(name="person.find.by.id", query="SELECT p FROM Person p WHERE p.id = :person_id"),
   @NamedQuery(name="person.find.friens.all", query="SELECT p FROM Person p join p.friends WHERE p.id = :person_id"),
-  @NamedQuery(name="person.find.home.all", query="SELECT p FROM Person p join p.homes WHERE p.id = :person_id")
+  //@NamedQuery(name="person.find.home.all", query="SELECT p FROM Person p join p.homes WHERE p.id = :person_id")
 })
 @XmlRootElement(name="persons")
 public class Person {
@@ -23,9 +23,9 @@ public class Person {
 	    private String mail;
 	    
 	    private List<Person> friends = new ArrayList<Person>();
-	    private List<Home> homes = new ArrayList<Home>();
-	    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	    @JoinColumn(name="FK_PERSON_ID", referencedColumnName = "PERSON_ID")
+	   // private List<Home> homes = new ArrayList<Home>();
+	    /*@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	    @JoinColumn(name="FK_PERSON_ID", referencedColumnName = "PERSON_ID")*/
 	    
 	    
 	    @Id
@@ -69,12 +69,12 @@ public class Person {
 		public void setFriends(List<Person> friends) {
 			this.friends = friends;
 		}
-		public List<Home> getHomes() {
+		/*public List<Home> getHomes() {
 			return homes;
 		}
 		public void setHomes(List<Home> homes) {
 			this.homes = homes;
-		}
+		}*/
 	    public Person(){ 
 	    }
 		public Person(String surname, String fisrname, String mail) {
