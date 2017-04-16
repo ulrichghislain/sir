@@ -46,7 +46,7 @@ public class Person {
 		public String getFirstname() {
 			return firstname;
 		}
-		public void setFisrname(String fisrname) {
+		public void setFirstname(String fisrname) {
 			this.firstname = fisrname;
 		}
 		public String getMail() {

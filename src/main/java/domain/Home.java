@@ -67,12 +67,13 @@ public class Home {
 	}
     
    
-	public Home(String name, String area, int numberOfPiece) {
+	public Home(String name,  int numberOfPiece, String area) {
 		super();
 		this.name = name;
 		this.area = area;
 		this.numberOfPiece = numberOfPiece;
 	}
+	
 	
 	
 	public String toString(){
